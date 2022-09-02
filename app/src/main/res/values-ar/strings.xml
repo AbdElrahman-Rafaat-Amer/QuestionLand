@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Quiz Land</string>
+
+    <string name="amount">عدد الاسئلة</string>
+    <string name="type">نوع الاسئلة</string>
+    <string name="difficulty">مستوي الصعوبة</string>
+    <string name="category">فئة الاسئلة</string>
+    <string name="random">عشوائي</string>
+    <string name="enable_connection">إعادة الاتصال</string>
+    <string name="setting">الإعدادت</string>
+    <string name="play">العب</string>
+    <string name="no_data_found">لا يوجد اسئلة تطابق هذه الاعدادات</string>
+    <string name="question_number">رقم السؤال :</string>
+    <string name="next_button">التالي</string>
+    <string name="true_answer">صح</string>
+    <string name="false_answer">خطأ</string>
+
+    <string-array name="difficulty_entries">
+        <item>سهل</item>
+        <item>متوسط</item>
+        <item>صعب</item>
+        <item>عشوائي</item>
+    </string-array>
+
+    <string-array name="type_entries">
+        <item>اختياري</item>
+        <item>صح و خطأ</item>
+        <item>عشوائي</item>
+    </string-array>
+
+    <string-array name="category_entries">
+        <item>عشوائي</item>
+        <item>معلومات عامة</item>
+        <item>كتب ترفيهية</item>
+        <item> فيلم ترفيهي </item>
+        <item> موسيقى ترفيهية </item>
+        <item> المسارح الموسيقية والمسارح الترفيهية </item>
+        <item> تلفزيون ترفيهي </item>
+        <item> ألعاب الفيديو الترفيهية </item>
+        <item> ألعاب الطاولة الترفيهية </item>
+        <item> طبيعة العلوم </item>
+        <item> علوم الكمبيوتر </item>
+        <item> علوم الرياضيات </item>
+        <item> الميثولوجيا </item>
+        <item> الرياضة </item>
+        <item> الجغرافيا </item>
+        <item> التاريخ </item>
+        <item> السياسة </item>
+        <item> الفن </item>
+        <item> المشاهير </item>
+        <item> الحيوانات </item>
+        <item> مركبات </item>
+        <item> كاريكاتير ترفيه </item>
+        <item> أدوات العلوم </item>
+        <item> أنمي ياباني ومانجا</item>
+        <item> الرسوم المتحركة والرسوم المتحركة </item>
+    </string-array>
+</resources>

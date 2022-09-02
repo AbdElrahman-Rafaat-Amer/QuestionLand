@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.facebook.shimmer.ShimmerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/shimmer_frame_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30sp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/question_animation"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_marginStart="8dp"
+            android:background="@color/shimmer_color"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="question" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/first_answer_animation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50sp"
+            android:background="@drawable/ic_shimmer_background"
+            android:padding="15sp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/question_animation"
+            app:layout_constraintTop_toBottomOf="@+id/question_animation"
+            tools:text="First Answer" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/second_answer_animation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:background="@drawable/ic_shimmer_background"
+            android:padding="15sp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/first_answer_animation"
+            app:layout_constraintTop_toBottomOf="@+id/first_answer_animation"
+            tools:text="Second Answer" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/third_answer_animation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:background="@drawable/ic_shimmer_background"
+            android:padding="15sp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/second_answer_animation"
+            app:layout_constraintTop_toBottomOf="@+id/second_answer_animation"
+            tools:text="Third Answer" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/fourth_answer_animation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:background="@drawable/ic_shimmer_background"
+            android:padding="15sp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/third_answer_animation"
+            app:layout_constraintTop_toBottomOf="@+id/third_answer_animation"
+            tools:text="Fourth Answer" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.facebook.shimmer.ShimmerFrameLayout>

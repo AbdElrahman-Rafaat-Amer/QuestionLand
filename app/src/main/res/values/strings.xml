@@ -1,0 +1,135 @@
+<resources>
+    <string name="app_name">Quiz Land</string>
+
+    <string name="amount">Number of questions</string>
+    <string name="type">type</string>
+    <string name="difficulty">difficulty</string>
+    <string name="category">category</string>
+    <string name="random">random</string>
+    <string name="enable_connection">enable connection</string>
+    <string name="setting">Setting</string>
+    <string name="play">Play</string>
+    <string name="no_data_found">There are no questions with these specifications</string>
+    <string name="question_number">Question Number :</string>
+    <string name="question_body" translatable="false">This will be the question</string>
+    <string name="first_answer" translatable="false">first answer</string>
+    <string name="second_answer" translatable="false">second answer</string>
+    <string name="third_answer" translatable="false">third answer</string>
+    <string name="fourth_answer" translatable="false">fourth answer</string>
+    <string name="next_button">Next</string>
+    <string name="true_answer">True</string>
+    <string name="false_answer">False</string>
+
+    <string-array name="amount_values">
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>35</item>
+        <item>40</item>
+        <item>45</item>
+        <item>50</item>
+    </string-array>
+
+    <string-array name="difficulty_values">
+        <item>easy</item>
+        <item>medium</item>
+        <item>hard</item>
+        <item> </item>
+    </string-array>
+
+    <string-array name="difficulty_entries">
+        <item>easy</item>
+        <item>medium</item>
+        <item>hard</item>
+        <item>random</item>
+    </string-array>
+
+
+    <string-array name="type_values">
+        <item>multiple</item>
+        <item>boolean</item>
+        <item> </item>
+    </string-array>
+
+    <string-array name="type_entries">
+        <item>multiple</item>
+        <item>true&amp;false</item>
+        <item>random</item>
+    </string-array>
+
+    <string-array name="category_values">
+        <item> </item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+    </string-array>
+
+    <string-array name="category_entries">
+        <item>Random</item>
+        <item>General Knowledge</item>
+        <item>Entertainment Books</item>
+        <item>Entertainment Film</item>
+        <item>Entertainment Music</item>
+        <item>Entertainment Musicals &amp; Theatres</item>
+        <item>Entertainment Television</item>
+        <item>Entertainment Video Games</item>
+        <item>Entertainment Board Games</item>
+        <item>Science &amp; Nature</item>
+        <item>Science Computers</item>
+        <item>Science Mathematics</item>
+        <item>Mythology</item>
+        <item>Sports</item>
+        <item>Geography</item>
+        <item>History</item>
+        <item>Politics</item>
+        <item>Art</item>
+        <item>Celebrities</item>
+        <item>Animals</item>
+        <item>Vehicles</item>
+        <item>Entertainment Comics</item>
+        <item>Science Gadgets</item>
+        <item>Entertainment: Japanese Anime &amp; Manga</item>
+        <item>Entertainment: Cartoon &amp; Animations</item>
+    </string-array>
+
+    <string name="dummy_text" translatable="false">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley
+        of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+        electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Lettres
+        sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker
+        including versions of Lorem Ipsum.</string>
+    <string name="profile_name">Profile Name</string>
+    <string name="total_question">Total question</string>
+    <string name="multiple_question">Multiple question</string>
+    <string name="boolean_questions">boolean questions</string>
+    <string name="correctly_answered_questions">correctly_answered_questions</string>
+    <string name="correct_questions">Correct questions</string>
+    <string name="incorrectly_questions">Incorrectly questions</string>
+    <string name="final_score">Final Score</string>
+
+
+</resources>
