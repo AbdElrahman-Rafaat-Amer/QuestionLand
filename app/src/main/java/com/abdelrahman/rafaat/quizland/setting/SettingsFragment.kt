@@ -1,4 +1,4 @@
-package com.abdelrahman.rafaat.quizland.ui.view
+package com.abdelrahman.rafaat.quizland.setting
 
 import android.os.Bundle
 import androidx.preference.PreferenceFragmentCompat

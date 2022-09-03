@@ -1,0 +1,262 @@
+package com.abdelrahman.rafaat.quizland.playing.view
+
+import android.graphics.Color
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.text.Html
+import android.util.Log
+import android.view.View
+import androidx.core.content.res.ResourcesCompat
+import androidx.lifecycle.ViewModelProvider
+import com.abdelrahman.rafaat.quizland.R
+import com.abdelrahman.rafaat.quizland.database.ConcreteLocaleSource
+import com.abdelrahman.rafaat.quizland.model.Question
+import com.abdelrahman.rafaat.quizland.playing.viewmodel.QuestionViewModel
+import com.abdelrahman.rafaat.quizland.playing.viewmodel.QuestionViewModelFactory
+import com.abdelrahman.rafaat.quizland.databinding.ActivityPlayingBinding
+import com.abdelrahman.rafaat.quizland.model.Repository
+import com.abdelrahman.rafaat.quizland.network.QuizClient
+import com.abdelrahman.rafaat.quizland.utils.ConnectionLiveData
+
+private const val TAG = "PlayingActivity"
+
+class PlayingActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityPlayingBinding
+    private lateinit var viewModelFactory: QuestionViewModelFactory
+    private lateinit var viewModel: QuestionViewModel
+    private lateinit var questions: List<Question>
+    private var questionNumber = 0
+    private var multipleQuestion = 0
+    private var correctAnswer = 0
+    private var isCorrectFromFirstOne = true
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityPlayingBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+
+        binding.noDataLayout.noDataTextView.text = getString(R.string.no_data_found)
+        checkConnection()
+        initViewModel()
+        observeViewModel()
+
+        binding.nextButton.setOnClickListener {
+            if (questionNumber < questions.size - 1) {
+                questionNumber++
+                if (questionNumber == 9)
+                    binding.nextButton.text = getString(R.string.submit)
+                showQuestions()
+            } else {
+                Log.i(TAG, "onViewCreated: you reach the end of questions")
+                calculateResult()
+                finish()
+            }
+        }
+
+        binding.firstAnswer.setOnClickListener {
+            if (binding.firstAnswer.text == Html.fromHtml(
+                    questions[questionNumber].correct_answer,
+                    Html.FROM_HTML_MODE_COMPACT
+                )
+            ) {
+                Log.i(TAG, "onCreate: in if button")
+                binding.firstAnswer.setBackgroundColor(Color.GREEN)
+                binding.nextButton.isEnabled = true
+                binding.secondAnswer.isEnabled = false
+                binding.thirdAnswer.isEnabled = false
+                binding.fourthAnswer.isEnabled = false
+                if (isCorrectFromFirstOne) {
+                    Log.i(TAG, "onCreate: in if score")
+                    correctAnswer++
+                }
+            } else {
+                binding.firstAnswer.setBackgroundColor(Color.RED)
+                isCorrectFromFirstOne = false
+            }
+        }
+
+        binding.secondAnswer.setOnClickListener {
+            if (binding.secondAnswer.text == Html.fromHtml(
+                    questions[questionNumber].correct_answer,
+                    Html.FROM_HTML_MODE_COMPACT
+                )
+            ) {
+                Log.i(TAG, "onCreate: in if button")
+                binding.secondAnswer.setBackgroundColor(Color.GREEN)
+                binding.nextButton.isEnabled = true
+                binding.firstAnswer.isEnabled = false
+                binding.thirdAnswer.isEnabled = false
+                binding.fourthAnswer.isEnabled = false
+                if (isCorrectFromFirstOne) {
+                    Log.i(TAG, "onCreate: in if score")
+                    correctAnswer++
+                }
+            } else {
+                binding.secondAnswer.setBackgroundColor(Color.RED)
+                isCorrectFromFirstOne = false
+            }
+
+        }
+
+        binding.thirdAnswer.setOnClickListener {
+            if (binding.thirdAnswer.text == Html.fromHtml(
+                    questions[questionNumber].correct_answer,
+                    Html.FROM_HTML_MODE_COMPACT
+                )
+            ) {
+                Log.i(TAG, "onCreate: in if button")
+                binding.thirdAnswer.setBackgroundColor(Color.GREEN)
+                binding.nextButton.isEnabled = true
+                binding.firstAnswer.isEnabled = false
+                binding.secondAnswer.isEnabled = false
+                binding.fourthAnswer.isEnabled = false
+                if (isCorrectFromFirstOne) {
+                    Log.i(TAG, "onCreate: in if score")
+                    correctAnswer++
+                }
+            } else {
+                binding.thirdAnswer.setBackgroundColor(Color.RED)
+                isCorrectFromFirstOne = false
+            }
+        }
+
+        binding.fourthAnswer.setOnClickListener {
+            if (binding.fourthAnswer.text == Html.fromHtml(
+                    questions[questionNumber].correct_answer,
+                    Html.FROM_HTML_MODE_COMPACT
+                )
+            ) {
+                Log.i(TAG, "onCreate: in if button")
+                binding.fourthAnswer.setBackgroundColor(Color.GREEN)
+                binding.nextButton.isEnabled = true
+                binding.firstAnswer.isEnabled = false
+                binding.secondAnswer.isEnabled = false
+                binding.thirdAnswer.isEnabled = false
+                if (isCorrectFromFirstOne) {
+                    Log.i(TAG, "onCreate: in if score")
+                    correctAnswer++
+                }
+            } else {
+                binding.fourthAnswer.setBackgroundColor(Color.RED)
+                isCorrectFromFirstOne = false
+            }
+        }
+
+
+    }
+
+    private fun checkConnection() {
+        ConnectionLiveData.getInstance(this).observe(this) {
+            if (it) {
+                viewModel.getQuestions()
+                binding.noConnectionLayout.noInternetAnimation.visibility = View.GONE
+                binding.noConnectionLayout.enableConnection.visibility = View.GONE
+                binding.shimmerAnimationLayout.shimmerFrameLayout.visibility = View.VISIBLE
+                binding.shimmerAnimationLayout.shimmerFrameLayout.startShimmerAnimation()
+            } else {
+                Log.i(TAG, "checkConnection: no internet connection")
+                binding.noConnectionLayout.noInternetAnimation.visibility = View.VISIBLE
+                binding.noConnectionLayout.enableConnection.visibility = View.VISIBLE
+                binding.shimmerAnimationLayout.shimmerFrameLayout.visibility = View.GONE
+                binding.shimmerAnimationLayout.shimmerFrameLayout.stopShimmerAnimation()
+            }
+        }
+    }
+
+    private fun initViewModel() {
+        viewModelFactory = QuestionViewModelFactory(
+            Repository.getRepositoryInstance(
+                QuizClient.getQuizClient(), ConcreteLocaleSource.getInstance(this), this.application
+            ), this.application
+        )
+
+        viewModel = ViewModelProvider(
+            this,
+            viewModelFactory
+        )[QuestionViewModel::class.java]
+    }
+
+    private fun observeViewModel() {
+        viewModel.question.observe(this) {
+            if (it.response_code == 0 && it.results.isNotEmpty()) {
+                Log.i(TAG, "observeViewModel: there is data")
+                Log.i(TAG, "observeViewModel: data ---------------> $it")
+                questions = it.results
+                binding.questionProgressBar.max = questions.size
+                binding.constrainLayout.visibility = View.VISIBLE
+                binding.noDataLayout.noDataAnimation.visibility = View.GONE
+                binding.noDataLayout.noDataTextView.visibility = View.GONE
+                showQuestions()
+            } else {
+                Log.i(TAG, "observeViewModel: there is no data")
+                binding.constrainLayout.visibility = View.GONE
+                binding.noDataLayout.noDataAnimation.visibility = View.VISIBLE
+                binding.noDataLayout.noDataTextView.visibility = View.VISIBLE
+            }
+            binding.shimmerAnimationLayout.shimmerFrameLayout.visibility = View.GONE
+            binding.shimmerAnimationLayout.shimmerFrameLayout.stopShimmerAnimation()
+        }
+    }
+
+    private fun showQuestions() {
+
+        binding.questionCategory.text = questions[questionNumber].category
+        binding.questionProgressBar.progress = questionNumber + 1
+        binding.questionNumber.text = "${questionNumber + 1} / ${questions.size}"
+        binding.question.text =
+            Html.fromHtml(questions[questionNumber].question, Html.FROM_HTML_MODE_COMPACT)
+        if (questions[questionNumber].incorrect_answers.size == 1) {
+            binding.firstAnswer.text = Html.fromHtml("True", Html.FROM_HTML_MODE_COMPACT)
+            binding.secondAnswer.text = Html.fromHtml("False", Html.FROM_HTML_MODE_COMPACT)
+            binding.thirdAnswer.visibility = View.INVISIBLE
+            binding.fourthAnswer.visibility = View.INVISIBLE
+        } else {
+            val randomNumbers = (0..3).shuffled()
+            val questionAnswers =
+                questions[questionNumber].incorrect_answers.plus(questions[questionNumber].correct_answer)
+            binding.firstAnswer.text =
+                Html.fromHtml(questionAnswers[randomNumbers[0]], Html.FROM_HTML_MODE_COMPACT)
+            binding.secondAnswer.text =
+                Html.fromHtml(questionAnswers[randomNumbers[1]], Html.FROM_HTML_MODE_COMPACT)
+            binding.thirdAnswer.text =
+                Html.fromHtml(questionAnswers[randomNumbers[2]], Html.FROM_HTML_MODE_COMPACT)
+            binding.fourthAnswer.text =
+                Html.fromHtml(questionAnswers[randomNumbers[3]], Html.FROM_HTML_MODE_COMPACT)
+            binding.thirdAnswer.visibility = View.VISIBLE
+            binding.fourthAnswer.visibility = View.VISIBLE
+            multipleQuestion++
+        }
+
+        binding.firstAnswer.background =
+            ResourcesCompat.getDrawable(resources, R.drawable.ic_question_button_background, null)
+        binding.secondAnswer.background =
+            ResourcesCompat.getDrawable(resources, R.drawable.ic_question_button_background, null)
+        binding.thirdAnswer.background =
+            ResourcesCompat.getDrawable(resources, R.drawable.ic_question_button_background, null)
+        binding.fourthAnswer.background =
+            ResourcesCompat.getDrawable(resources, R.drawable.ic_question_button_background, null)
+
+        binding.firstAnswer.isEnabled = true
+        binding.secondAnswer.isEnabled = true
+        binding.thirdAnswer.isEnabled = true
+        binding.fourthAnswer.isEnabled = true
+        binding.nextButton.isEnabled = false
+        isCorrectFromFirstOne = true
+    }
+
+    private fun calculateResult() {
+        val totalQuestions = questions.size
+        val booleanQuestion = totalQuestions - multipleQuestion
+        val incorrectAnswer = totalQuestions - correctAnswer
+        Log.i(TAG, "calculateResult: totalQuestions-------------> $totalQuestions")
+        Log.i(TAG, "calculateResult: multipleQuestion-------------> $multipleQuestion")
+        Log.i(TAG, "calculateResult: booleanQuestion-------------> $booleanQuestion")
+        Log.i(TAG, "calculateResult: correctAnswer-------------> $correctAnswer")
+        Log.i(TAG, "calculateResult: incorrectAnswer-------------> $incorrectAnswer")
+        Log.i(TAG, "calculateResult: Score-------------> $correctAnswer")
+        viewModel.updateResult(totalQuestions, multipleQuestion, correctAnswer)
+        viewModel.insertQuestionsToRoom(questions)
+    }
+}

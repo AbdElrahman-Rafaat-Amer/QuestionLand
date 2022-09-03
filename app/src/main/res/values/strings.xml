@@ -10,6 +10,7 @@
     <string name="setting">Setting</string>
     <string name="play">Play</string>
     <string name="no_data_found">There are no questions with these specifications</string>
+    <string name="no_history_found">There are no history yet</string>
     <string name="question_number">Question Number :</string>
     <string name="question_body" translatable="false">This will be the question</string>
     <string name="first_answer" translatable="false">first answer</string>
@@ -19,6 +20,16 @@
     <string name="next_button">Next</string>
     <string name="true_answer">True</string>
     <string name="false_answer">False</string>
+    <string name="home"> Home</string>
+    <string name="history"> History</string>
+    <string name="profile_name">Profile Name</string>
+    <string name="total_question">Total question</string>
+    <string name="multiple_question">Multiple question</string>
+    <string name="boolean_questions">boolean questions</string>
+    <string name="correct_questions">Correct questions</string>
+    <string name="incorrectly_questions">Incorrectly questions</string>
+    <string name="final_score">Final Score</string>
+
 
     <string-array name="amount_values">
         <item>5</item>
@@ -122,14 +133,7 @@
         electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Lettres
         sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker
         including versions of Lorem Ipsum.</string>
-    <string name="profile_name">Profile Name</string>
-    <string name="total_question">Total question</string>
-    <string name="multiple_question">Multiple question</string>
-    <string name="boolean_questions">boolean questions</string>
-    <string name="correctly_answered_questions">correctly_answered_questions</string>
-    <string name="correct_questions">Correct questions</string>
-    <string name="incorrectly_questions">Incorrectly questions</string>
-    <string name="final_score">Final Score</string>
-
+    <string name="change_name">Enter your name</string>
+    <string name="submit">Submit</string>
 
 </resources>

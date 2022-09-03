@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.PlayingFragment">
+    tools:context=".playing.view.PlayingActivity">
 
     <include
         android:id="@+id/no_connection_layout"
@@ -40,30 +40,16 @@
         android:visibility="gone">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/question_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="70sp"
             android:layout_marginEnd="20sp"
-            android:text="@string/question_number"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/question_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5sp"
-            android:layout_marginEnd="20sp"
-            android:text="5/10"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@id/textView"
-            app:layout_constraintStart_toEndOf="@+id/textView"
-            app:layout_constraintTop_toTopOf="@+id/textView" />
 
         <TextView
             android:id="@+id/question"
@@ -79,7 +65,34 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/question_number" />
+            app:layout_constraintTop_toBottomOf="@+id/question_category" />
+
+
+        <ProgressBar
+            android:id="@+id/question_progressBar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15sp"
+            android:layout_marginTop="9sp"
+            android:progress="0"
+            android:scaleY="4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/question" />
+
+        <TextView
+            android:id="@+id/question_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5sp"
+            android:layout_marginTop="9sp"
+            android:layout_marginEnd="20sp"
+            android:text="5/10"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/question_progressBar" />
 
 
         <Button
@@ -93,7 +106,7 @@
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/question" />
+            app:layout_constraintTop_toBottomOf="@+id/question_progressBar" />
 
         <Button
             android:id="@+id/second_answer"

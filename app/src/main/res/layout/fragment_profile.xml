@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment">
+    android:id="@+id/root_view"
+    tools:context=".main.view.ProfileFragment">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circleImageView"
@@ -47,13 +48,13 @@
         android:id="@+id/total_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40sp"
         android:layout_marginTop="40dp"
         android:text="@string/total_question"
         android:textColor="@color/black"
+        android:layout_marginStart="20sp"
         android:textSize="17sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/play_button"
         app:layout_constraintTop_toBottomOf="@+id/play_button" />
 
     <TextView

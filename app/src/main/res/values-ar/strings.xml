@@ -11,10 +11,20 @@
     <string name="setting">الإعدادت</string>
     <string name="play">العب</string>
     <string name="no_data_found">لا يوجد اسئلة تطابق هذه الاعدادات</string>
+    <string name="no_history_found">لا يوجد سجل بعد</string>
     <string name="question_number">رقم السؤال :</string>
     <string name="next_button">التالي</string>
     <string name="true_answer">صح</string>
     <string name="false_answer">خطأ</string>
+    <string name="home"> الرئيسية</string>
+    <string name="history"> السجل</string>
+    <string name="profile_name">اسم المستخدم</string>
+    <string name="total_question">عدد الاسئلة : </string>
+    <string name="multiple_question">عدد الاسئلة الاختياري : </string>
+    <string name="boolean_questions">عدد الاسئلة صح وخطا : </string>
+    <string name="correct_questions"> عدد الأسئلة الصحيحة : </string>
+    <string name="incorrectly_questions">عدد الأسئلة الخاطئة : </string>
+    <string name="final_score">النتيجة النهائية : </string>
 
     <string-array name="difficulty_entries">
         <item>سهل</item>

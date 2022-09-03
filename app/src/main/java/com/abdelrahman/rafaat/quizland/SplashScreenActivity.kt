@@ -1,9 +1,9 @@
-package com.abdelrahman.rafaat.quizland.ui.view
+package com.abdelrahman.rafaat.quizland
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.abdelrahman.rafaat.quizland.R
+import com.abdelrahman.rafaat.quizland.main.view.MainActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay

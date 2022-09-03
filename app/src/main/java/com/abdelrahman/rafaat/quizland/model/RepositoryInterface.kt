@@ -4,12 +4,13 @@ import retrofit2.Response
 
 interface RepositoryInterface {
 
-/*    suspend fun getQuestions(
-        amount: Int,
-        category: String,
-        difficulty: String,
-        type: String
-    ): Response<QuestionModel>*/
-
     suspend fun getQuestions(): Response<QuestionModel>
+
+    //DataBase
+    suspend fun getQuestionsFromDataBase(): List<Question>?
+    suspend fun insertQuestionsToRoom(questions: List<Question>)
+
+    //Shared
+    suspend fun updateSharedResult(totalQuestions: Int, multipleQuestion: Int, correctAnswer: Int)
+    suspend fun getSharedResult(): Triple<Int, Int, Int>
 }

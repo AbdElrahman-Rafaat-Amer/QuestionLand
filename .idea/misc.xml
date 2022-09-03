@@ -4,12 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android/projects/MyProjects/QuizLand/app/src/main/res/drawable-v24/ic_button_background.xml" value="0.1795" />
+        <entry key="..\:/Android/projects/MyProjects/QuizLand/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1795" />
         <entry key="..\:/Android/projects/MyProjects/QuizLand/app/src/main/res/drawable-v24/ic_question_button_background.xml" value="0.1795" />
         <entry key="..\:/Android/projects/MyProjects/QuizLand/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1795" />
         <entry key="..\:/Android/projects/MyProjects/QuizLand/app/src/main/res/drawable/ic_shimmer_background.xml" value="0.1795" />
         <entry key="..\:/Android/projects/MyProjects/QuizLand/app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />
+        <entry key="..\:/Android/projects/MyProjects/QuizLand/app/src/main/res/layout/activity_playing.xml" value="0.27447916666666666" />
         <entry key="..\:/Android/projects/MyProjects/QuizLand/app/src/main/res/layout/activity_setting.xml" value="0.27447916666666666" />
         <entry key="..\:/Android/projects/MyProjects/QuizLand/app/src/main/res/layout/activity_splash_screen.xml" value="0.1265625" />
+        <entry key="..\:/Android/projects/MyProjects/QuizLand/app/src/main/res/layout/custom_row.xml" value="0.27447916666666666" />
+        <entry key="..\:/Android/projects/MyProjects/QuizLand/app/src/main/res/layout/fragment_history.xml" value="0.264" />
         <entry key="..\:/Android/projects/MyProjects/QuizLand/app/src/main/res/layout/fragment_main.xml" value="0.27447916666666666" />
         <entry key="..\:/Android/projects/MyProjects/QuizLand/app/src/main/res/layout/fragment_playing.xml" value="0.2604166666666667" />
         <entry key="..\:/Android/projects/MyProjects/QuizLand/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
