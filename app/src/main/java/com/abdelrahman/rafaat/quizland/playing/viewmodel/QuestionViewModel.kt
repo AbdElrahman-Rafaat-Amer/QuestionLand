@@ -51,7 +51,7 @@ class QuestionViewModel(private val _iRepo: RepositoryInterface, var application
     fun updateResult(totalQuestions: Int, multipleQuestion: Int, correctAnswer: Int) {
         viewModelScope.launch {
             val response =
-                _iRepo.updateSharedResult(totalQuestions, multipleQuestion, correctAnswer)
+                _iRepo.updateGameStatics(totalQuestions, multipleQuestion, correctAnswer)
         }
     }
 

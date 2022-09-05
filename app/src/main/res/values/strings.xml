@@ -29,7 +29,8 @@
     <string name="correct_questions">Correct questions</string>
     <string name="incorrectly_questions">Incorrectly questions</string>
     <string name="final_score">Final Score</string>
-
+    <string name="change_name">Enter your name</string>
+    <string name="submit">Submit</string>
 
     <string-array name="amount_values">
         <item>5</item>
@@ -133,7 +134,12 @@
         electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Lettres
         sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker
         including versions of Lorem Ipsum.</string>
-    <string name="change_name">Enter your name</string>
-    <string name="submit">Submit</string>
+    <string name="save">Save</string>
+    <string name="user_name">user name</string>
+    <string name="user_name_error">User name can not be less than 6 char</string>
+    <string name="end_playing">End Playing</string>
+    <string name="warning_message">Are you sure to go back ??</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
 
 </resources>

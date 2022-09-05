@@ -25,6 +25,10 @@
     <string name="correct_questions"> عدد الأسئلة الصحيحة : </string>
     <string name="incorrectly_questions">عدد الأسئلة الخاطئة : </string>
     <string name="final_score">النتيجة النهائية : </string>
+    <string name="change_name">ادخل اسمك</string>
+    <string name="submit">إنهاء</string>
+    <string name="save">Save</string>
+    <string name="user_name_error">User name can not be less than 6 char</string>
 
     <string-array name="difficulty_entries">
         <item>سهل</item>

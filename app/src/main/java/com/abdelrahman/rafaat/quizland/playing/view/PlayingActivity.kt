@@ -1,11 +1,18 @@
 package com.abdelrahman.rafaat.quizland.playing.view
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
 import android.util.Log
+import android.view.Gravity
 import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.ViewModelProvider
 import com.abdelrahman.rafaat.quizland.R
@@ -30,6 +37,7 @@ class PlayingActivity : AppCompatActivity() {
     private var multipleQuestion = 0
     private var correctAnswer = 0
     private var isCorrectFromFirstOne = true
+    private var isDialogShowing = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +59,7 @@ class PlayingActivity : AppCompatActivity() {
             } else {
                 Log.i(TAG, "onViewCreated: you reach the end of questions")
                 calculateResult()
-                finish()
+                showDialog()
             }
         }
 
@@ -258,5 +266,45 @@ class PlayingActivity : AppCompatActivity() {
         Log.i(TAG, "calculateResult: Score-------------> $correctAnswer")
         viewModel.updateResult(totalQuestions, multipleQuestion, correctAnswer)
         viewModel.insertQuestionsToRoom(questions)
+    }
+
+    private fun showDialog() {
+        val view: View = layoutInflater.inflate(R.layout.show_score_layout, null)
+        val scoreTextView = view.findViewById<TextView>(R.id.score_textView)
+        val imageView = view.findViewById<ImageView>(R.id.score_imageView)
+        val finishButton = view.findViewById<Button>(R.id.finish_button)
+        val builder = AlertDialog.Builder(this, R.style.CustomAlertDialog)
+        builder.setView(view)
+        val alertDialog = builder.create()
+        alertDialog.setCanceledOnTouchOutside(false)
+        alertDialog.show()
+        isDialogShowing = true
+        val window = alertDialog.window
+        window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        window.setGravity(Gravity.CENTER)
+
+        scoreTextView.text = "$correctAnswer / ${questions.size}"
+        if (correctAnswer > questions.size / 2) {
+            imageView.setImageResource(R.drawable.ic_happy_face)
+        }
+        finishButton.setOnClickListener {
+            alertDialog.dismiss()
+            finish()
+        }
+    }
+
+    override fun onBackPressed() {
+        val builder = AlertDialog.Builder(this)
+        var alertDialog: AlertDialog? = null
+        if (!isDialogShowing) {
+            Log.i(TAG, "onBackPressed: in if")
+            builder.setTitle(R.string.end_playing)
+                .setMessage(R.string.warning_message).setCancelable(false)
+                .setPositiveButton(R.string.yes) { _, _ -> finish() }
+                .setNegativeButton(R.string.no) { _, _ -> alertDialog!!.dismiss() }
+            alertDialog = builder.create()
+            alertDialog.show()
+        }
+        Log.i(TAG, "onBackPressed: ")
     }
 }

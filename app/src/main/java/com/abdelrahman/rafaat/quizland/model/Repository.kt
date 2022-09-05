@@ -5,9 +5,11 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
 import androidx.preference.PreferenceManager
+import com.abdelrahman.rafaat.quizland.R
 import com.abdelrahman.rafaat.quizland.database.LocaleSource
 import com.abdelrahman.rafaat.quizland.network.RemoteSource
 import retrofit2.Response
+
 
 private const val TAG = "Repository"
 
@@ -104,7 +106,7 @@ class Repository private constructor(
         this.localeSource.insertQuestionsToRoom(questions)
     }
 
-    override suspend fun updateSharedResult(
+    override suspend fun updateGameStatics(
         totalQuestions: Int,
         multipleQuestion: Int,
         correctAnswer: Int
@@ -121,12 +123,21 @@ class Repository private constructor(
         editor?.apply()
     }
 
-    override suspend fun getSharedResult(): Triple<Int, Int, Int> {
+    override suspend fun updateUserName(userName: String) {
+        editor?.putString("USER_NAME", userName)
+        editor?.apply()
+    }
+
+    override suspend fun getSharedResult(): SharedValue {
+
         val totalQuestions = sharedPrefs?.getInt("TOTAL_QUESTIONS", 0)!!
         val multipleQuestion = sharedPrefs?.getInt("MULTIPLE_QUESTIONS", 0)!!
         val correctAnswer = sharedPrefs?.getInt("CORRECT_ANSWER", 0)!!
+        val userName =
+            sharedPrefs?.getString("USER_NAME", application.getString(R.string.user_name))!!
 
-        return Triple(totalQuestions, multipleQuestion, correctAnswer)
+        return SharedValue(totalQuestions, multipleQuestion, correctAnswer, userName)
+
     }
 
 }

@@ -6,8 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.abdelrahman.rafaat.quizland.model.QuestionModel
 import com.abdelrahman.rafaat.quizland.model.RepositoryInterface
+import com.abdelrahman.rafaat.quizland.model.SharedValue
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -18,8 +18,8 @@ private const val TAG = "QuestionViewModel"
 class MainViewModel(private val _iRepo: RepositoryInterface, var application: Application) :
     ViewModel() {
 
-    private var _gameStatics = MutableLiveData<Triple<Int, Int, Int>>()
-    val gameStatics: LiveData<Triple<Int, Int, Int>> = _gameStatics
+    private var _gameStatics = MutableLiveData<SharedValue>()
+    val gameStatics: LiveData<SharedValue> = _gameStatics
 
     init {
         Log.i(TAG, "init: ")
@@ -31,6 +31,12 @@ class MainViewModel(private val _iRepo: RepositoryInterface, var application: Ap
             withContext(Dispatchers.Main) {
                 _gameStatics.postValue(response)
             }
+        }
+    }
+
+    fun updateUserName(userName: String) {
+        viewModelScope.launch {
+            _iRepo.updateUserName(userName)
         }
     }
 

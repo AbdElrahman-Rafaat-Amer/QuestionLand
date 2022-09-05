@@ -30,7 +30,6 @@ class HistoryRecyclerAdapter : RecyclerView.Adapter<HistoryRecyclerAdapter.ViewH
         holder.answerTextview.text =
             Html.fromHtml(currentQuestion.correct_answer, Html.FROM_HTML_MODE_COMPACT)
 
-
     }
 
     override fun getItemCount(): Int {

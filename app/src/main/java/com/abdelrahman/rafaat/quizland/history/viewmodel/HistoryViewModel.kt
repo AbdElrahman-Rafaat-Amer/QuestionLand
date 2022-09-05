@@ -30,6 +30,7 @@ class HistoryViewModel(private val _iRepo: RepositoryInterface, var application:
                     _questions.postValue(response!!)
                 } else {
                     Log.i(TAG, "getQuestions: no old questions")
+                    _questions.postValue(emptyList())
                 }
             }
         }
