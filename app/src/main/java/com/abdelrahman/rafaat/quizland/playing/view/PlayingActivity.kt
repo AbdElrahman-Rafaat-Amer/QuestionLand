@@ -71,7 +71,8 @@ class PlayingActivity : AppCompatActivity() {
             ) {
                 Log.i(TAG, "onCreate: in if button")
                 binding.firstAnswer.setBackgroundColor(Color.GREEN)
-                binding.nextButton.isEnabled = true
+            //    binding.nextButton.isEnabled = true
+                binding.nextButton.visibility = View.VISIBLE
                 binding.secondAnswer.isEnabled = false
                 binding.thirdAnswer.isEnabled = false
                 binding.fourthAnswer.isEnabled = false
@@ -93,7 +94,8 @@ class PlayingActivity : AppCompatActivity() {
             ) {
                 Log.i(TAG, "onCreate: in if button")
                 binding.secondAnswer.setBackgroundColor(Color.GREEN)
-                binding.nextButton.isEnabled = true
+              //  binding.nextButton.isEnabled = true
+                binding.nextButton.visibility = View.VISIBLE
                 binding.firstAnswer.isEnabled = false
                 binding.thirdAnswer.isEnabled = false
                 binding.fourthAnswer.isEnabled = false
@@ -116,7 +118,8 @@ class PlayingActivity : AppCompatActivity() {
             ) {
                 Log.i(TAG, "onCreate: in if button")
                 binding.thirdAnswer.setBackgroundColor(Color.GREEN)
-                binding.nextButton.isEnabled = true
+             //   binding.nextButton.isEnabled = true
+                binding.nextButton.visibility = View.VISIBLE
                 binding.firstAnswer.isEnabled = false
                 binding.secondAnswer.isEnabled = false
                 binding.fourthAnswer.isEnabled = false
@@ -138,7 +141,8 @@ class PlayingActivity : AppCompatActivity() {
             ) {
                 Log.i(TAG, "onCreate: in if button")
                 binding.fourthAnswer.setBackgroundColor(Color.GREEN)
-                binding.nextButton.isEnabled = true
+          //      binding.nextButton.isEnabled = true
+                binding.nextButton.visibility = View.VISIBLE
                 binding.firstAnswer.isEnabled = false
                 binding.secondAnswer.isEnabled = false
                 binding.thirdAnswer.isEnabled = false
@@ -250,7 +254,8 @@ class PlayingActivity : AppCompatActivity() {
         binding.secondAnswer.isEnabled = true
         binding.thirdAnswer.isEnabled = true
         binding.fourthAnswer.isEnabled = true
-        binding.nextButton.isEnabled = false
+     //   binding.nextButton.isEnabled = false
+        binding.nextButton.visibility = View.INVISIBLE
         isCorrectFromFirstOne = true
     }
 
@@ -273,7 +278,7 @@ class PlayingActivity : AppCompatActivity() {
         val scoreTextView = view.findViewById<TextView>(R.id.score_textView)
         val imageView = view.findViewById<ImageView>(R.id.score_imageView)
         val finishButton = view.findViewById<Button>(R.id.finish_button)
-        val builder = AlertDialog.Builder(this, R.style.CustomAlertDialog)
+        val builder = AlertDialog.Builder(this, R.style.CustomAlertDialog).setCancelable(false)
         builder.setView(view)
         val alertDialog = builder.create()
         alertDialog.setCanceledOnTouchOutside(false)

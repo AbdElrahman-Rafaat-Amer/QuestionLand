@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Quiz Land</string>
-
+    <string name="app_name">Question Land</string>
     <string name="amount">عدد الاسئلة</string>
     <string name="type">نوع الاسئلة</string>
     <string name="difficulty">مستوي الصعوبة</string>
@@ -26,9 +25,14 @@
     <string name="incorrectly_questions">عدد الأسئلة الخاطئة : </string>
     <string name="final_score">النتيجة النهائية : </string>
     <string name="change_name">ادخل اسمك</string>
-    <string name="submit">إنهاء</string>
-    <string name="save">Save</string>
-    <string name="user_name_error">User name can not be less than 6 char</string>
+    <string name="submit">حفظ</string>
+    <string name="save">إنهاء</string>
+    <string name="user_name">اسم المستخدم</string>
+    <string name="user_name_error">اسم المستخدم لا يجب ان يقل عن 6 احرف</string>
+    <string name="end_playing">إنهاء اللعب</string>
+    <string name="warning_message"> هل تريد بالفعل إنهاء اللعب ؟؟</string>
+    <string name="no">لا  </string>
+    <string name="yes">نعم  </string>
 
     <string-array name="difficulty_entries">
         <item>سهل</item>
@@ -68,6 +72,6 @@
         <item> كاريكاتير ترفيه </item>
         <item> أدوات العلوم </item>
         <item> أنمي ياباني ومانجا</item>
-        <item> الرسوم المتحركة والرسوم المتحركة </item>
+        <item> الرسوم المتحركة  </item>
     </string-array>
 </resources>

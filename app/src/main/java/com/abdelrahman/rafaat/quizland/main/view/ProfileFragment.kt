@@ -119,5 +119,6 @@ class ProfileFragment : Fragment() {
         Log.i("LifeCycle", "onResume: ProfileFragment")
         viewModel.getSharedResult()
     }
+
 }
 

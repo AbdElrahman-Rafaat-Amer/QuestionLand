@@ -54,4 +54,6 @@ class MainActivity : AppCompatActivity() {
         binding.viewPager.currentItem = 1
 
     }
+
+
 }
