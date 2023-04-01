@@ -166,13 +166,13 @@ class PlayingActivity : AppCompatActivity() {
                 binding.noConnectionLayout.noInternetAnimation.visibility = View.GONE
                 binding.noConnectionLayout.enableConnection.visibility = View.GONE
                 binding.shimmerAnimationLayout.shimmerFrameLayout.visibility = View.VISIBLE
-                binding.shimmerAnimationLayout.shimmerFrameLayout.startShimmerAnimation()
+                binding.shimmerAnimationLayout.shimmerFrameLayout.startShimmer()
             } else {
                 Log.i(TAG, "checkConnection: no internet connection")
                 binding.noConnectionLayout.noInternetAnimation.visibility = View.VISIBLE
                 binding.noConnectionLayout.enableConnection.visibility = View.VISIBLE
                 binding.shimmerAnimationLayout.shimmerFrameLayout.visibility = View.GONE
-                binding.shimmerAnimationLayout.shimmerFrameLayout.stopShimmerAnimation()
+                binding.shimmerAnimationLayout.shimmerFrameLayout.stopShimmer()
             }
         }
     }
@@ -208,7 +208,7 @@ class PlayingActivity : AppCompatActivity() {
                 binding.noDataLayout.noDataTextView.visibility = View.VISIBLE
             }
             binding.shimmerAnimationLayout.shimmerFrameLayout.visibility = View.GONE
-            binding.shimmerAnimationLayout.shimmerFrameLayout.stopShimmerAnimation()
+            binding.shimmerAnimationLayout.shimmerFrameLayout.stopShimmer()
         }
     }
 
