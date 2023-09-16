@@ -11,18 +11,23 @@
 
     <EditText
         android:id="@+id/user_name_editText"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40sp"
+        android:autofillHints="username"
         android:hint="@string/user_name"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:inputType="text"
-        android:autofillHints="username" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHeight_min="48dp"
+        app:layout_constraintWidth_max="320dp"
+        app:layout_constraintWidth_min="100dp" />
 
     <Button
         android:id="@+id/save_Button"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15sp"
         android:background="@drawable/ic_button_background"
@@ -32,7 +37,9 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_name_editText" />
+        app:layout_constraintTop_toBottomOf="@+id/user_name_editText"
+        app:layout_constraintWidth_max="320dp"
+        app:layout_constraintWidth_min="100dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

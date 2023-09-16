@@ -1,10 +1,8 @@
 package com.abdelrahman.rafaat.quizland.main.view
 
-
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -32,7 +30,6 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        Log.i("LifeCycle", "onCreateView: ProfileFragment")
         binding = FragmentProfileBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -40,13 +37,8 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Log.i("LifeCycle", "onViewCreated: ProfileFragment")
         initViewModel()
         observeViewModel()
-
-        /* binding.circleImageView.setOnClickListener {
-             openGallery()
-         }*/
 
         // Do not forget to write a user name Code
         binding.userNameTextView.setOnClickListener {
@@ -116,7 +108,6 @@ class ProfileFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        Log.i("LifeCycle", "onResume: ProfileFragment")
         viewModel.getSharedResult()
     }
 

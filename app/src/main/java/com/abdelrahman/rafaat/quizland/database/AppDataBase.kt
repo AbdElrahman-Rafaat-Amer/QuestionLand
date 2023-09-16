@@ -9,9 +9,10 @@ import com.abdelrahman.rafaat.quizland.model.Question
 
 @Database(
     entities = [Question::class],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
-//@TypeConverters(DataConverter::class)
+
 abstract class AppDataBase : RoomDatabase() {
     abstract fun weatherDao(): QuestionDAO
 

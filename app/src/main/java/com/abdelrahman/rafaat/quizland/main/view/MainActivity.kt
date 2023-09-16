@@ -2,13 +2,10 @@ package com.abdelrahman.rafaat.quizland.main.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.viewpager2.widget.ViewPager2
 import com.abdelrahman.rafaat.quizland.R
 import com.abdelrahman.rafaat.quizland.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayout
-
-private const val TAG = "MainActivity"
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,28 +29,19 @@ class MainActivity : AppCompatActivity() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 binding.tabLayoutView.getTabAt(position)!!.select()
-                Log.i(TAG, "onPageSelected: position-----------> $position")
             }
         })
 
         binding.tabLayoutView.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 binding.viewPager.currentItem = tab?.position ?: 1
-                Log.i(TAG, "onTabSelected: position ------> ${tab?.position}")
             }
 
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-                Log.i(TAG, "onTabUnselected: position ------> ${tab!!.position}")
-            }
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
 
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-                Log.i(TAG, "onTabReselected: position ------> ${tab!!.position}")
-            }
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
 
         })
         binding.viewPager.currentItem = 1
-
     }
-
-
 }

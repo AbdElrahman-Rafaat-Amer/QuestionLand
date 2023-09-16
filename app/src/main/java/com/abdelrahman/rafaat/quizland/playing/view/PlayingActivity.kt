@@ -1,31 +1,27 @@
 package com.abdelrahman.rafaat.quizland.playing.view
 
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
-import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.ViewModelProvider
 import com.abdelrahman.rafaat.quizland.R
 import com.abdelrahman.rafaat.quizland.database.ConcreteLocaleSource
-import com.abdelrahman.rafaat.quizland.model.Question
-import com.abdelrahman.rafaat.quizland.playing.viewmodel.QuestionViewModel
-import com.abdelrahman.rafaat.quizland.playing.viewmodel.QuestionViewModelFactory
 import com.abdelrahman.rafaat.quizland.databinding.ActivityPlayingBinding
+import com.abdelrahman.rafaat.quizland.model.Question
 import com.abdelrahman.rafaat.quizland.model.Repository
 import com.abdelrahman.rafaat.quizland.network.QuizClient
+import com.abdelrahman.rafaat.quizland.playing.viewmodel.QuestionViewModel
+import com.abdelrahman.rafaat.quizland.playing.viewmodel.QuestionViewModelFactory
 import com.abdelrahman.rafaat.quizland.utils.ConnectionLiveData
-
-private const val TAG = "PlayingActivity"
 
 class PlayingActivity : AppCompatActivity() {
 
@@ -57,7 +53,6 @@ class PlayingActivity : AppCompatActivity() {
                     binding.nextButton.text = getString(R.string.submit)
                 showQuestions()
             } else {
-                Log.i(TAG, "onViewCreated: you reach the end of questions")
                 calculateResult()
                 showDialog()
             }
@@ -69,15 +64,12 @@ class PlayingActivity : AppCompatActivity() {
                     Html.FROM_HTML_MODE_COMPACT
                 )
             ) {
-                Log.i(TAG, "onCreate: in if button")
                 binding.firstAnswer.setBackgroundColor(Color.GREEN)
-            //    binding.nextButton.isEnabled = true
                 binding.nextButton.visibility = View.VISIBLE
                 binding.secondAnswer.isEnabled = false
                 binding.thirdAnswer.isEnabled = false
                 binding.fourthAnswer.isEnabled = false
                 if (isCorrectFromFirstOne) {
-                    Log.i(TAG, "onCreate: in if score")
                     correctAnswer++
                 }
             } else {
@@ -92,15 +84,12 @@ class PlayingActivity : AppCompatActivity() {
                     Html.FROM_HTML_MODE_COMPACT
                 )
             ) {
-                Log.i(TAG, "onCreate: in if button")
                 binding.secondAnswer.setBackgroundColor(Color.GREEN)
-              //  binding.nextButton.isEnabled = true
                 binding.nextButton.visibility = View.VISIBLE
                 binding.firstAnswer.isEnabled = false
                 binding.thirdAnswer.isEnabled = false
                 binding.fourthAnswer.isEnabled = false
                 if (isCorrectFromFirstOne) {
-                    Log.i(TAG, "onCreate: in if score")
                     correctAnswer++
                 }
             } else {
@@ -116,15 +105,12 @@ class PlayingActivity : AppCompatActivity() {
                     Html.FROM_HTML_MODE_COMPACT
                 )
             ) {
-                Log.i(TAG, "onCreate: in if button")
                 binding.thirdAnswer.setBackgroundColor(Color.GREEN)
-             //   binding.nextButton.isEnabled = true
                 binding.nextButton.visibility = View.VISIBLE
                 binding.firstAnswer.isEnabled = false
                 binding.secondAnswer.isEnabled = false
                 binding.fourthAnswer.isEnabled = false
                 if (isCorrectFromFirstOne) {
-                    Log.i(TAG, "onCreate: in if score")
                     correctAnswer++
                 }
             } else {
@@ -139,15 +125,12 @@ class PlayingActivity : AppCompatActivity() {
                     Html.FROM_HTML_MODE_COMPACT
                 )
             ) {
-                Log.i(TAG, "onCreate: in if button")
                 binding.fourthAnswer.setBackgroundColor(Color.GREEN)
-          //      binding.nextButton.isEnabled = true
                 binding.nextButton.visibility = View.VISIBLE
                 binding.firstAnswer.isEnabled = false
                 binding.secondAnswer.isEnabled = false
                 binding.thirdAnswer.isEnabled = false
                 if (isCorrectFromFirstOne) {
-                    Log.i(TAG, "onCreate: in if score")
                     correctAnswer++
                 }
             } else {
@@ -168,7 +151,6 @@ class PlayingActivity : AppCompatActivity() {
                 binding.shimmerAnimationLayout.shimmerFrameLayout.visibility = View.VISIBLE
                 binding.shimmerAnimationLayout.shimmerFrameLayout.startShimmer()
             } else {
-                Log.i(TAG, "checkConnection: no internet connection")
                 binding.noConnectionLayout.noInternetAnimation.visibility = View.VISIBLE
                 binding.noConnectionLayout.enableConnection.visibility = View.VISIBLE
                 binding.shimmerAnimationLayout.shimmerFrameLayout.visibility = View.GONE
@@ -193,8 +175,6 @@ class PlayingActivity : AppCompatActivity() {
     private fun observeViewModel() {
         viewModel.question.observe(this) {
             if (it.response_code == 0 && it.results.isNotEmpty()) {
-                Log.i(TAG, "observeViewModel: there is data")
-                Log.i(TAG, "observeViewModel: data ---------------> $it")
                 questions = it.results
                 binding.questionProgressBar.max = questions.size
                 binding.constrainLayout.visibility = View.VISIBLE
@@ -202,7 +182,6 @@ class PlayingActivity : AppCompatActivity() {
                 binding.noDataLayout.noDataTextView.visibility = View.GONE
                 showQuestions()
             } else {
-                Log.i(TAG, "observeViewModel: there is no data")
                 binding.constrainLayout.visibility = View.GONE
                 binding.noDataLayout.noDataAnimation.visibility = View.VISIBLE
                 binding.noDataLayout.noDataTextView.visibility = View.VISIBLE
@@ -261,14 +240,6 @@ class PlayingActivity : AppCompatActivity() {
 
     private fun calculateResult() {
         val totalQuestions = questions.size
-        val booleanQuestion = totalQuestions - multipleQuestion
-        val incorrectAnswer = totalQuestions - correctAnswer
-        Log.i(TAG, "calculateResult: totalQuestions-------------> $totalQuestions")
-        Log.i(TAG, "calculateResult: multipleQuestion-------------> $multipleQuestion")
-        Log.i(TAG, "calculateResult: booleanQuestion-------------> $booleanQuestion")
-        Log.i(TAG, "calculateResult: correctAnswer-------------> $correctAnswer")
-        Log.i(TAG, "calculateResult: incorrectAnswer-------------> $incorrectAnswer")
-        Log.i(TAG, "calculateResult: Score-------------> $correctAnswer")
         viewModel.updateResult(totalQuestions, multipleQuestion, correctAnswer)
         viewModel.insertQuestionsToRoom(questions)
     }
@@ -302,7 +273,6 @@ class PlayingActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         var alertDialog: AlertDialog? = null
         if (!isDialogShowing) {
-            Log.i(TAG, "onBackPressed: in if")
             builder.setTitle(R.string.end_playing)
                 .setMessage(R.string.warning_message).setCancelable(false)
                 .setPositiveButton(R.string.yes) { _, _ -> finish() }
@@ -310,6 +280,5 @@ class PlayingActivity : AppCompatActivity() {
             alertDialog = builder.create()
             alertDialog.show()
         }
-        Log.i(TAG, "onBackPressed: ")
     }
 }

@@ -1,11 +1,7 @@
 package com.abdelrahman.rafaat.quizland.network
 
-import android.util.Log
 import com.abdelrahman.rafaat.quizland.model.QuestionModel
 import retrofit2.Response
-
-
-private const val TAG = "QuizClient"
 
 class QuizClient private constructor() : RemoteSource {
 
@@ -27,16 +23,11 @@ class QuizClient private constructor() : RemoteSource {
         difficulty: String,
         type: String
     ): Response<QuestionModel> {
-        val response = quizHelper.getQuestions(
+        return quizHelper.getQuestions(
             amount = amount,
             category = category,
             difficulty = difficulty,
             type = type
         )
-        Log.i(TAG, "getQuestions: code----------> ${response.code()}")
-        Log.i(TAG, "getQuestions: body----------> ${response.body()}")
-        return response
     }
-
-
 }
