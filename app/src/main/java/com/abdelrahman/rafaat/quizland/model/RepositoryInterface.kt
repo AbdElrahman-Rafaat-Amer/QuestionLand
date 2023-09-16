@@ -1,8 +1,6 @@
 package com.abdelrahman.rafaat.quizland.model
 
-import android.net.Uri
 import retrofit2.Response
-import java.net.URI
 
 interface RepositoryInterface {
 

@@ -1,10 +1,7 @@
 package com.abdelrahman.rafaat.quizland.database
 
 import android.content.Context
-import android.util.Log
 import com.abdelrahman.rafaat.quizland.model.Question
-
-private const val TAG = "ConcreteLocaleSource"
 
 class ConcreteLocaleSource(context: Context) : LocaleSource {
 
@@ -25,18 +22,13 @@ class ConcreteLocaleSource(context: Context) : LocaleSource {
     }
 
     override suspend fun getQuestionsFromDataBase(): List<Question> {
-        Log.i(TAG, "getQuestionsFromDataBase: ------------------------")
         val response = weatherDao?.getStoredQuestions()!!
-        Log.i(TAG, "getQuestionsFromDataBase: ------------------> $response")
         return response
     }
 
 
     override suspend fun insertQuestionsToRoom(questions: List<Question>) {
-
-        Log.i(TAG, "insertQuestionsToRoom: -----------------------------")
         weatherDao?.insertQuestionsToRoom(questions)
-
     }
 
 }
