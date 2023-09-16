@@ -33,6 +33,8 @@
     <string name="warning_message"> هل تريد بالفعل إنهاء اللعب ؟؟</string>
     <string name="no">لا  </string>
     <string name="yes">نعم  </string>
+    <string name="final_score_won">كسبت</string>
+    <string name="final_score_lose">خسرت</string>
 
     <string-array name="difficulty_entries">
         <item>سهل</item>

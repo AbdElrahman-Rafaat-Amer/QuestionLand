@@ -34,167 +34,173 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/play_button"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="70sp"
         android:layout_marginTop="25sp"
         android:background="@drawable/ic_button_background"
         android:text="@string/play"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_name_textView" />
+        app:layout_constraintTop_toBottomOf="@+id/user_name_textView"
+        app:layout_constraintWidth_max="320dp"
+        app:layout_constraintWidth_min="100dp" />
 
-    <TextView
-        android:id="@+id/total_question"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20sp"
         android:layout_marginTop="40dp"
-        android:text="@string/total_question"
-        android:textColor="@color/black"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/play_button"
-        app:layout_constraintTop_toBottomOf="@+id/play_button" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/play_button">
 
-    <TextView
-        android:id="@+id/total_question_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40sp"
-        android:layout_marginTop="40dp"
-        android:text="70"
-        android:textColor="@color/black"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/incorrectly_answered_questions"
-        app:layout_constraintTop_toBottomOf="@+id/play_button" />
+        <TextView
+            android:id="@+id/total_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/total_question"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/multiple_question"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/multiple_question"
-        android:textColor="@color/black"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/total_question"
-        app:layout_constraintTop_toBottomOf="@+id/total_question" />
+        <TextView
+            android:id="@+id/total_question_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40sp"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/incorrectly_answered_questions"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="70" />
 
-    <TextView
-        android:id="@+id/multiple_question_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40sp"
-        android:layout_marginTop="15dp"
-        android:text="40"
-        android:textColor="@color/black"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/incorrectly_answered_questions"
-        app:layout_constraintTop_toBottomOf="@+id/total_question" />
+        <TextView
+            android:id="@+id/multiple_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/multiple_question"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/total_question"
+            app:layout_constraintTop_toBottomOf="@+id/total_question" />
 
-    <TextView
-        android:id="@+id/boolean_questions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/boolean_questions"
-        android:textColor="@color/black"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/multiple_question"
-        app:layout_constraintTop_toBottomOf="@+id/multiple_question" />
+        <TextView
+            android:id="@+id/multiple_question_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40sp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/incorrectly_answered_questions"
+            app:layout_constraintTop_toBottomOf="@+id/total_question"
+            tools:text="40" />
 
-    <TextView
-        android:id="@+id/boolean_question_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40sp"
-        android:layout_marginTop="15dp"
-        android:text="30"
-        android:textColor="@color/black"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/incorrectly_answered_questions"
-        app:layout_constraintTop_toBottomOf="@+id/multiple_question" />
+        <TextView
+            android:id="@+id/boolean_questions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/boolean_questions"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/multiple_question"
+            app:layout_constraintTop_toBottomOf="@+id/multiple_question" />
 
-    <TextView
-        android:id="@+id/correctly_answered_questions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/correct_questions"
-        android:textColor="@color/black"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/boolean_questions"
-        app:layout_constraintTop_toBottomOf="@+id/boolean_questions" />
+        <TextView
+            android:id="@+id/boolean_question_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40sp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/incorrectly_answered_questions"
+            app:layout_constraintTop_toBottomOf="@+id/multiple_question"
+            tools:text="30" />
 
-    <TextView
-        android:id="@+id/correctly_question_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40sp"
-        android:layout_marginTop="15dp"
-        android:text="50"
-        android:textColor="@color/black"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/incorrectly_answered_questions"
-        app:layout_constraintTop_toBottomOf="@+id/boolean_questions" />
+        <TextView
+            android:id="@+id/correctly_answered_questions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/correct_questions"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/boolean_questions"
+            app:layout_constraintTop_toBottomOf="@+id/boolean_questions" />
 
-    <TextView
-        android:id="@+id/incorrectly_answered_questions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/incorrectly_questions"
-        android:textColor="@color/black"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/correctly_answered_questions"
-        app:layout_constraintTop_toBottomOf="@+id/correctly_answered_questions" />
+        <TextView
+            android:id="@+id/correctly_question_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40sp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/incorrectly_answered_questions"
+            app:layout_constraintTop_toBottomOf="@+id/boolean_questions"
+            tools:text="50" />
 
-    <TextView
-        android:id="@+id/incorrectly_question_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40sp"
-        android:layout_marginTop="15dp"
-        android:text="20"
-        android:textColor="@color/black"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/incorrectly_answered_questions"
-        app:layout_constraintTop_toBottomOf="@+id/correctly_answered_questions" />
+        <TextView
+            android:id="@+id/incorrectly_answered_questions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/incorrectly_questions"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/correctly_answered_questions"
+            app:layout_constraintTop_toBottomOf="@+id/correctly_answered_questions" />
 
+        <TextView
+            android:id="@+id/incorrectly_question_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40sp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/incorrectly_answered_questions"
+            app:layout_constraintTop_toBottomOf="@+id/correctly_answered_questions"
+            tools:text="20" />
 
-    <TextView
-        android:id="@+id/final_score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/final_score"
-        android:textColor="@color/black"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/incorrectly_answered_questions"
-        app:layout_constraintTop_toBottomOf="@+id/incorrectly_answered_questions" />
+        <TextView
+            android:id="@+id/final_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/final_score"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/incorrectly_answered_questions"
+            app:layout_constraintTop_toBottomOf="@+id/incorrectly_answered_questions" />
 
-    <TextView
-        android:id="@+id/final_score_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40sp"
-        android:layout_marginTop="15dp"
-        android:text="80"
-        android:textColor="@color/black"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/incorrectly_answered_questions"
-        app:layout_constraintTop_toBottomOf="@+id/incorrectly_answered_questions" />
+        <TextView
+            android:id="@+id/final_score_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40sp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/incorrectly_answered_questions"
+            app:layout_constraintTop_toBottomOf="@+id/incorrectly_answered_questions"
+            tools:text="80" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
